@@ -1,6 +1,5 @@
 {
-  "name": "billinio",
-  "version": "0.1.0",
+  "name": "utility-stripe",
   "private": true,
   "dependencies": {
     "@types/node": "^12.19.9",
@@ -14,13 +13,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "lint": "eslint --ext=ts,tsx src tests --no-error-on-unmatched-pattern --quiet || true"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
