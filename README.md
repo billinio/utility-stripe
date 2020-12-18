@@ -7,4 +7,11 @@ Simple UI to retrieve tokens from Stripe. This utility fully supports:
 - [3DS](https://en.wikipedia.org/wiki/3-D_Secure) (3-D Secure)
 - [3DS2](https://en.wikipedia.org/wiki/3-D_Secure#3-D_Secure_2.0) (3-D Secure 2.0)
 
->  **IMPORTANT: Do not use this app in a public environment. This app requires secret keys that should never be published!**
+## Important
+
+**Stripe Utility is only intended to be run locally as a useful development utility. Do not use in a public environment as it requires secret keys that should never be exposed to the world.** 
+
+**This app will only accept test Stripe API keys. Do not use live Stripe API keys!**
+
+-----
+
