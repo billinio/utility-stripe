@@ -1,4 +1,4 @@
-.main {
+.container {
   padding: var(--dimension-spacing-large);
   overflow: auto;
   flex-grow: 1;

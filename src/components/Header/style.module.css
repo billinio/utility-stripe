@@ -1,0 +1,5 @@
+.container {
+  margin-bottom: var(--dimension-spacing-large);
+  align-items: center;
+  display: flex;
+}

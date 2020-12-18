@@ -29,6 +29,8 @@
   
   /* Fonts */
   --font-size-default: 16px;
+  --font-size-small: 14px;
+  --font-size-large: 28px;
   --font-family-default: 'Camphor', sans-serif;
   --font-family-brand: 'K2D', sans-serif;
 }
@@ -47,6 +49,7 @@ input, button, textarea,select { font: inherit }
 :focus, fieldset { outline:none }
 fieldset { min-width: 0; border:0 }
 body:not(:-moz-handler-blocked) fieldset { display: table-cell }
+a, a:visited, a:visited:hover, a:active { text-decoration: none }
 @media (prefers-reduced-motion: reduce) {*{ animation-duration: .01ms!important; animation-iteration-count: 1!important; transition-duration: .01ms!important; scroll-behavior: auto!important }}
 
 /*

@@ -9,7 +9,7 @@ interface Props {
 export function Aside(props: Props) {
 
   return (
-    <aside className={style.aside}>
+    <aside className={style.container}>
       {props.children}
     </aside>
   );

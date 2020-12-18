@@ -6,12 +6,12 @@ interface Props {
   children: React.ReactNode;
 }
 
-export function Main(props: Props) {
+export function Side(props: Props) {
 
   return (
-    <main className={style.container}>
+    <aside className={style.container}>
       {props.children}
-    </main>
+    </aside>
   );
 
 }

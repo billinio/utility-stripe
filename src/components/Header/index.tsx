@@ -6,12 +6,12 @@ interface Props {
   children: React.ReactNode;
 }
 
-export function Main(props: Props) {
+export function Header(props: Props) {
 
   return (
-    <main className={style.container}>
+    <header className={style.container}>
       {props.children}
-    </main>
+    </header>
   );
 
 }
