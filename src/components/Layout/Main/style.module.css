@@ -1,0 +1,7 @@
+.main {
+  padding: var(--dimension-spacing-large);
+  overflow: auto;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+}

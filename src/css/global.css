@@ -3,7 +3,7 @@
 */
 :root {
   /* Colours */
-  --color-background: #f7f9fe;
+  --color-background: #f1f7fe;
   --color-foreground: #0c145a;
   --color-brand: #3546ab;
   --color-placeholder: #c0c2d5;
@@ -21,7 +21,11 @@
   --color-orange-light: #fde7e0;
 
   /* Dimensions */
-  --dimension-border-radius: 8px;
+  --dimension-border-radius: 10px;
+  --dimension-spacing-large: 36px;
+  --dimension-spacing-medium: 24px;
+  --dimension-spacing-small: 12px;
+  --dimension-nav: 57px;
   
   /* Fonts */
   --font-size-default: 16px;
@@ -34,7 +38,7 @@
 */
 *, ::before, ::after { box-sizing: border-box }
 ul[class], ol[class], fieldset { padding: 0 }
-body, h1, h2, h3, h4, p, ul[class], ol[class], li, figure, figcaption, blockquote, dl, dd, fieldset { margin: 0; font-weight: 400 }
+body, h1, h2, h3, h4, p, ul[class], ol[class], li, i, figure, figcaption, blockquote, dl, dd, fieldset { margin: 0; font-weight: 400; font-style: normal; }
 body { min-height: 100vh; scroll-behavior: smooth; text-rendering: optimizeSpeed; line-height: 1.5 }
 ul[class], ol[class] { list-style: none }
 a:not([class]) { text-decoration-skip-ink: auto }
