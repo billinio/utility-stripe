@@ -2,9 +2,9 @@
   "name": "utility-stripe",
   "private": true,
   "dependencies": {
-    "@types/node": "^12.19.9",
-    "@types/react": "^16.14.2",
-    "@types/react-dom": "^16.9.10",
+    "@types/node": "^14.14.14",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
