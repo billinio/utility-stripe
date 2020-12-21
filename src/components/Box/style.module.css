@@ -1,0 +1,5 @@
+.container {
+  padding: var(--dimension-spacing-medium);
+  background: var(--color-white);
+  border-radius: var(--dimension-border-radius);
+}

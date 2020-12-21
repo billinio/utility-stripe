@@ -2,6 +2,8 @@ import { useHistory, useLocation, Link } from "react-router-dom";
 import React, { useEffect } from "react";
 
 import { Aside } from "components/Layout/Aside";
+import { Box } from "components/Box";
+import { Grid } from "components/Grid";
 import { Header } from "components/Header";
 import { Icon } from "components/Icon";
 import { Main } from "components/Layout/Main";
@@ -22,6 +24,7 @@ export function SetupIntent() {
   return (
     <>
       <Main>
+
         <Header>
           <Title>Setup Intent</Title>
           <Side>
@@ -30,6 +33,11 @@ export function SetupIntent() {
             </Link>
           </Side>
         </Header>
+
+        <Grid>
+          <Box>...</Box>
+        </Grid>
+
       </Main>
       <Aside>Aside</Aside>
     </>

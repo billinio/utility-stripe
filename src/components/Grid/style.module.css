@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  margin-bottom: var(--dimension-spacing-large);
+  display: flex;
+}
+.container > div, .container > section {
+  margin-right: var(--dimension-spacing-medium);
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+}
+.container > div:last-child, .container > section:last-child {
+  margin-right: 0;
+}
