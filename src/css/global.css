@@ -30,6 +30,7 @@
   --dimension-spacing-small: 12px;
   --dimension-spacing-tiny: 6px;
   --dimension-nav: 57px;
+  --dimension-form-input: 47px;
   
   /* Fonts */
   --font-size-default: 16px;
@@ -73,14 +74,23 @@ body {
   color: var(--color-placeholder);
 }
 
-/**
- * Hyperlinks
- */
- a, a:visited, a:active {
+/*
+  Hyperlinks
+*/
+a, a:visited, a:active {
   color: var(--color-blue-default);
   text-decoration: none !important;
   cursor: pointer;
- }
+}
 a:hover, a:visited:hover {
   color: var(--color-foreground)
 }
+
+/*
+  Vendor
+*/
+#nprogress .bar {
+  height: 4px;
+  background: var(--color-orange-default);
+}
+#nprogress .spinner, #nprogress .peg { display: none }

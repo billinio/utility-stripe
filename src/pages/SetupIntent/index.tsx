@@ -29,7 +29,7 @@ export function SetupIntent() {
         <Heading title="Setup Intent">
           <Aside>
             <Link to="/setup-intent" onClick={() => history.go(0)}>
-              <Icon icon="fas fa-undo-alt" tooltip="Reset form" />
+              <Icon icon="fas fa-undo-alt" tooltip="Reset all forms" />
             </Link>
             <a href="https://stripe.com/docs/payments/setup-intents" target="_blank" rel="noreferrer">
               <Icon icon="fas fa-question-circle" tooltip="More info" />
@@ -38,7 +38,7 @@ export function SetupIntent() {
         </Heading>
 
         {/* Payment Method */}
-        <Grid>
+        <Grid size="large">
           <PaymentMethod />
         </Grid>
 

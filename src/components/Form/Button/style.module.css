@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+  height: var(--dimension-form-input);
+  background: var(--color-brand);
+  color: var(--color-white);
+  border: 0;
+  border-radius: var(--dimension-border-radius);
+  cursor: pointer;
+}
+.container[disabled] {
+  background: var(--color-muted);
+  text-shadow: 1px 1px 0 var(--color-text);
+  color: rgba(255, 255, 255, .5);
+  cursor: not-allowed;
+}

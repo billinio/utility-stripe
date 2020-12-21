@@ -1,0 +1,6 @@
+.container {
+  height: var(--dimension-form-input);
+  padding: 12px var(--dimension-spacing-small) 0;
+  border: solid 1px var(--color-nav-off);
+  border-radius: var(--dimension-border-radius);
+}
