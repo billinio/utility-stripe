@@ -6,7 +6,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { config } from "system/config";
 
-const stripe = loadStripe(config.stripe.publicKey);
+const publicKey = config.stripe.publicKey;
+const stripe = loadStripe(publicKey);
+
+if (!publicKey.includes("_test_")) {
+  console.warn("IMPORTANT:\nYou are using a live Stripe API Key. This is not advised, you have been warned!");
+}
 
 import "./css/global.css";
 
