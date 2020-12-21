@@ -2,6 +2,8 @@
   "name": "utility-stripe",
   "private": true,
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.11.0",
     "@types/classnames": "^2.2.11",
     "@types/node": "^14.14.14",
     "@types/react": "^17.0.0",
