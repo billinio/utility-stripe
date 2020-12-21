@@ -21,6 +21,8 @@
   --color-orange-default: #f0582e;
   --color-orange-light: #fde7e0;
 
+  --color-error: #e72d3d;
+
   /* Dimensions */
   --dimension-border-radius: 10px;
   --dimension-spacing-large: 36px;
