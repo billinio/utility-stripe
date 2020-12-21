@@ -6,7 +6,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export function HeaderAside(props: Props) {
+export function Aside(props: Props) {
 
   return (
     <aside className={style.container}>

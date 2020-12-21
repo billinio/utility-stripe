@@ -6,12 +6,12 @@ interface Props {
   children: React.ReactNode;
 }
 
-export function HeaderHeading(props: Props) {
+export function Summary(props: Props) {
 
   return (
-    <h1 className={style.container}>
+    <div className={style.container}>
       {props.children}
-    </h1>
+    </div>
   );
 
 }

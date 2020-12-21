@@ -1,14 +1,15 @@
 import { useHistory, useLocation, Link } from "react-router-dom";
 import React, { useEffect } from "react";
 
-import { Box } from "components/Box";
+import { Aside } from "components/Header/Aside";
 import { Grid } from "components/Grid";
 import { Header } from "components/Header";
-import { HeaderAside } from "components/Header/HeaderAside";
-import { HeaderHeading } from "components/Header/HeaderHeading";
+import { Title } from "components/Header/Title";
 import { Icon } from "components/Icon";
 import { Main } from "components/Layout/Main";
 import { Sidebar } from "components/Layout/Sidebar";
+
+import { PaymentMethod } from "elements/PaymentMethod";
 
 export function SetupIntent() {
   const history = useHistory();
@@ -27,20 +28,20 @@ export function SetupIntent() {
 
         {/* Header */}
         <Header>
-          <HeaderHeading>Setup Intent</HeaderHeading>
-          <HeaderAside>
+          <Title>Setup Intent</Title>
+          <Aside>
             <Link to="/setup-intent" onClick={() => history.go(0)}>
               <Icon icon="fas fa-undo-alt" tooltip="Reset form" />
             </Link>
             <a href="https://stripe.com/docs/payments/setup-intents" target="_blank" rel="noreferrer">
               <Icon icon="fas fa-question-circle" tooltip="More info" />
             </a>
-          </HeaderAside>
+          </Aside>
         </Header>
 
         {/* Payment Method */}
         <Grid>
-          <Box>...</Box>
+          <PaymentMethod />
         </Grid>
 
       </Main>
