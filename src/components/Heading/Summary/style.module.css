@@ -1,0 +1,4 @@
+.container {
+  margin-top: var(--dimension-spacing-tiny);
+  color: var(--color-text)
+}

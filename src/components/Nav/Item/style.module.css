@@ -4,7 +4,7 @@
   margin-bottom: var(--dimension-spacing-medium);
   border: solid 1px transparent;
   border-radius: var(--dimension-border-radius);
-  color: var(--color-nav-off);
+  color: var(--color-nav-off) !important;
   font-size: 24px;
   text-decoration: none !important;
   cursor: pointer;
@@ -19,7 +19,7 @@
   border-radius: var(--dimension-border-radius) 0 0 var(--dimension-border-radius);
 }
 .container:hover, .container.active {
-  color: var(--color-brand);
+  color: var(--color-brand) !important;
   background: var(--color-nav-background);
 }
 

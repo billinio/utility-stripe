@@ -47,6 +47,15 @@
 .default .tooltip {
   top: var(--size);
 }
+.small {
+  --size: 34px;
+  width: var(--size);
+  height: var(--size);
+  font-size: 14px;
+}
+.small .tooltip {
+  top: var(--size);
+}
 
 /*
   Colors

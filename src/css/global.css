@@ -5,6 +5,7 @@
   /* Colours */
   --color-background: #e8f0f9;
   --color-foreground: #0c145a;
+  --color-text: #525f7f;
   --color-brand: #3546ab;
   --color-placeholder: #c0c2d5;
   --color-muted: #8f93b3;
@@ -25,12 +26,14 @@
   --dimension-spacing-large: 36px;
   --dimension-spacing-medium: 24px;
   --dimension-spacing-small: 12px;
+  --dimension-spacing-tiny: 6px;
   --dimension-nav: 57px;
   
   /* Fonts */
   --font-size-default: 16px;
   --font-size-small: 14px;
   --font-size-large: 28px;
+  --font-size-medium: 22px;
   --font-family-default: 'Camphor', sans-serif;
   --font-family-brand: 'K2D', sans-serif;
 }
@@ -41,7 +44,7 @@
 *, ::before, ::after { box-sizing: border-box }
 ul[class], ol[class], fieldset { padding: 0 }
 body, h1, h2, h3, h4, p, ul[class], ol[class], li, i, figure, figcaption, blockquote, dl, dd, fieldset { margin: 0; font-weight: 400; font-style: normal; }
-body { min-height: 100vh; scroll-behavior: smooth; text-rendering: optimizeSpeed; line-height: 1.5 }
+body { min-height: 100vh; scroll-behavior: smooth; text-rendering: optimizeSpeed; line-height: 1.7 }
 ul[class], ol[class] { list-style: none }
 a:not([class]) { text-decoration-skip-ink: auto }
 img { max-width:100%; border: 0; display: block }
@@ -66,4 +69,16 @@ body {
 }
 ::placeholder {
   color: var(--color-placeholder);
+}
+
+/**
+ * Hyperlinks
+ */
+ a, a:visited, a:active {
+  color: var(--color-blue-default);
+  text-decoration: none !important;
+  cursor: pointer;
+ }
+a:hover, a:visited:hover {
+  color: var(--color-foreground)
 }

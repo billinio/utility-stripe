@@ -6,7 +6,7 @@ import style from "./style.module.css";
 interface Props {
   icon: string;
   color?: "blue" | "orange" | "white";
-  size?: "default";
+  size?: "default" | "small";
   tooltip?: string;
 }
 
