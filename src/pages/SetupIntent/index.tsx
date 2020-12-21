@@ -32,6 +32,9 @@ export function SetupIntent() {
             <Link to="/setup-intent" onClick={() => history.go(0)}>
               <Icon icon="fas fa-undo-alt" tooltip="Reset form" />
             </Link>
+            <a href="https://stripe.com/docs/payments/setup-intents" target="_blank" rel="noreferrer">
+              <Icon icon="fas fa-question-circle" tooltip="More info" />
+            </a>
           </HeaderAside>
         </Header>
 
