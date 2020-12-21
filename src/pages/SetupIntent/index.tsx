@@ -1,14 +1,14 @@
 import { useHistory, useLocation, Link } from "react-router-dom";
 import React, { useEffect } from "react";
 
-import { Aside } from "components/Layout/Aside";
 import { Box } from "components/Box";
 import { Grid } from "components/Grid";
 import { Header } from "components/Header";
+import { HeaderAside } from "components/Header/HeaderAside";
+import { HeaderHeading } from "components/Header/HeaderHeading";
 import { Icon } from "components/Icon";
 import { Main } from "components/Layout/Main";
-import { Side } from "components/Header/Side";
-import { Title } from "components/Header/Title";
+import { Sidebar } from "components/Layout/Sidebar";
 
 export function SetupIntent() {
   const history = useHistory();
@@ -25,21 +25,23 @@ export function SetupIntent() {
     <>
       <Main>
 
+        {/* Header */}
         <Header>
-          <Title>Setup Intent</Title>
-          <Side>
+          <HeaderHeading>Setup Intent</HeaderHeading>
+          <HeaderAside>
             <Link to="/setup-intent" onClick={() => history.go(0)}>
               <Icon icon="fas fa-undo-alt" tooltip="Reset form" />
             </Link>
-          </Side>
+          </HeaderAside>
         </Header>
 
+        {/* Payment Method */}
         <Grid>
           <Box>...</Box>
         </Grid>
 
       </Main>
-      <Aside>Aside</Aside>
+      <Sidebar>Sidebar</Sidebar>
     </>
   );
 
