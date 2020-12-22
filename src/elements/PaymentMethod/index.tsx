@@ -1,19 +1,20 @@
+import { Link } from "react-router-dom";
 import { StripeStyle } from "system/constants";
 import * as Elements from "@stripe/react-stripe-js";
 import * as Stripe from "@stripe/stripe-js";
 import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
 
+import { Alert } from "components/Alert";
+import { Aside } from "components/Heading/Aside";
 import { Box } from "components/Box";
 import { Button } from "components/Form/Button";
+import { Form } from "components/Form";
 import { Grid } from "components/Grid";
 import { Heading } from "components/Heading";
-import { StripeElement } from "components/Form/StripeElement";
-import { Summary } from "components/Heading/Summary";
-import { Aside } from "components/Heading/Aside";
-import { Form } from "components/Form";
 import { Icon } from "components/Icon";
 import { Readonly } from "components/Form/Readonly";
+import { StripeElement } from "components/Form/StripeElement";
+import { Summary } from "components/Heading/Summary";
 
 export function PaymentMethod() {
   const [loading, setLoading] = useState(false);
@@ -61,13 +62,14 @@ export function PaymentMethod() {
       });
       isLoaded();
       if (error) {
-        alert(error.message);
+        Alert.error(error.message, "Oops!");
       } else if (paymentMethod) {
         setPaymentMethodId(paymentMethod.id);
+        Alert.info("Copied to clipboard", "Payment Method ID");
         copy();
       }
     } catch (error) {
-      alert(error.message);
+      Alert.error(error.message, "Something went wrong!");
       isLoaded();
     }
   };
