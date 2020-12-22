@@ -1,4 +1,4 @@
-import { useHistory, useLocation, Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import React, { useEffect } from "react";
 
 import { Aside } from "components/Heading/Aside";

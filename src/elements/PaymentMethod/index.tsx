@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { StripeStyle } from "system/constants";
 import * as Elements from "@stripe/react-stripe-js";
 import * as Stripe from "@stripe/stripe-js";
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import { Alert } from "components/Alert";
 import { Aside } from "components/Heading/Aside";
@@ -15,32 +15,14 @@ import { Icon } from "components/Icon";
 import { Readonly } from "components/Form/Readonly";
 import { StripeElement } from "components/Form/StripeElement";
 import { Summary } from "components/Heading/Summary";
+import { useLoader } from "components/Loading";
 
 export function PaymentMethod() {
-  const [loading, setLoading] = useState(false);
   const [paymentMethodId, setPaymentMethodId] = useState("");
   const elements = Elements.useElements() as Stripe.StripeElements;
-  const stripe = Elements.useStripe() as Stripe.Stripe;
+  const loader = useLoader();
   const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
-
-  //
-  // Utils
-  //
-  const copy = () => {
-    ref.current.focus();
-    ref.current.select();
-    document.execCommand("copy");
-  };
-
-  const isLoading = () => {
-    setLoading(true);
-    NProgress.start();
-  };
-
-  const isLoaded = () => {
-    setLoading(false);
-    NProgress.done();
-  };
+  const stripe = Elements.useStripe() as Stripe.Stripe;
 
   //
   // Events
@@ -54,23 +36,25 @@ export function PaymentMethod() {
   };
 
   const onSubmit = async () => {
-    isLoading();
+    loader.loading();
     try {
       const { error, paymentMethod } = await stripe.createPaymentMethod({
         type: "card",
         card: elements.getElement(Elements.CardNumberElement) as Stripe.StripeCardNumberElement,
       });
-      isLoaded();
+      loader.loaded();
       if (error) {
         Alert.error(error.message, "Oops!");
       } else if (paymentMethod) {
         setPaymentMethodId(paymentMethod.id);
         Alert.info("Copied to clipboard", "Payment Method ID");
-        copy();
+        ref.current.focus();
+        ref.current.select();
+        document.execCommand("copy");
       }
     } catch (error) {
       Alert.error(error.message, "Something went wrong!");
-      isLoaded();
+      loader.loaded();
     }
   };
 
@@ -101,7 +85,7 @@ export function PaymentMethod() {
           </StripeElement>
         </Grid>
         <Grid>
-          <Button loading={loading}>Submit</Button>
+          <Button loading={loader.isLoading}>Submit</Button>
         </Grid>
 
         {paymentMethodId && (
