@@ -1,8 +1,6 @@
-import React from "react";
-
 import { Item } from "components/Nav/Item";
 import { Logo } from "components/Logo";
-
+import React from "react";
 import style from "./style.module.css";
 
 export function Nav() {

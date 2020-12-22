@@ -1,7 +1,5 @@
-import React from "react";
-
 import { Nav } from "components/Nav";
-
+import React from "react";
 import style from "./style.module.css";
 
 interface Props {
