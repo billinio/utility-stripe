@@ -46,6 +46,12 @@
     "sort-imports": [
       "error",
       {
+        "memberSyntaxSortOrder": [
+          "all",
+          "single",
+          "multiple",
+          "none"
+        ],
         "allowSeparatedGroups": true
       }
     ],

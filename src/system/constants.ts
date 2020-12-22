@@ -3,7 +3,7 @@ import { StripeElementStyle } from "@stripe/stripe-js";
 export const StripeStyle: StripeElementStyle = {
   base: {
     backgroundColor: "#ffffff",
-    fontSize: "18px",
+    fontSize: "16px",
     color: "#525f7f",
     fontFamily: "Camphor, sans-serif",
     fontWeight: "400",

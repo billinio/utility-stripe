@@ -30,7 +30,7 @@
   --dimension-spacing-small: 12px;
   --dimension-spacing-tiny: 6px;
   --dimension-nav: 57px;
-  --dimension-form-input: 47px;
+  --dimension-form-input: 45px;
   
   /* Fonts */
   --font-size-default: 16px;
@@ -79,11 +79,12 @@ body {
   Typography
 */
 code {
-  padding: 1px var(--dimension-spacing-tiny) 2px;
+  padding: 1px var(--dimension-spacing-tiny) 3px;
   font-family: var(--font-family-code);
   background: var(--color-orange-light);
   color: var(--color-orange-default);
-  font-size: var(--font-size-small)
+  font-size: var(--font-size-small);
+  border-radius: 4px
 }
 
 /*

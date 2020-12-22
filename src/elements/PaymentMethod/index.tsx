@@ -28,7 +28,7 @@ export function PaymentMethod() {
   //
   // Events
   //
-  const reset = () => {
+  const onReset = () => {
     const card = elements.getElement(Elements.CardNumberElement) as Stripe.StripeCardNumberElement;
     const exp = elements.getElement(Elements.CardExpiryElement) as Stripe.StripeCardExpiryElement;
     card.clear();
@@ -66,12 +66,12 @@ export function PaymentMethod() {
     <Box>
       <Heading type="h2" title="Payment Method">
         <Aside>
-          <Link to="/setup-intent" onClick={reset}>
+          <Link to="/setup-intent" onClick={onReset}>
             <Icon size="small" color="blue" icon="fas fa-undo-alt" tooltip="Reset form" />
           </Link>
         </Aside>
         <Summary>
-          Collect customer card details and convert into a Stripe <a href="https://stripe.com/docs/api/payment_methods" target="_blank" rel="noreferrer">Payment Method</a> that can be
+          Collect a customer's card details and convert into a Stripe <a href="https://stripe.com/docs/api/payment_methods" target="_blank" rel="noreferrer">Payment Method</a> that can be
           used later to make payments or assign to a customer. This form will return a <code>payment_method.id</code>.
         </Summary>
       </Heading>
@@ -86,7 +86,7 @@ export function PaymentMethod() {
           </StripeElement>
         </Grid>
         <Grid>
-          <Button loading={loader.isLoading}>Submit</Button>
+          <Button loading={loader.isLoading}>Get Payment Method ID</Button>
         </Grid>
 
         {paymentMethodId && (

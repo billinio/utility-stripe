@@ -2,6 +2,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import React, { useEffect } from "react";
 
 import { Aside } from "components/Heading/Aside";
+import { CreateSetupIntent } from "elements/CreateSetupIntent";
 import { Grid } from "components/Grid";
 import { Heading } from "components/Heading";
 import { Icon } from "components/Icon";
@@ -39,6 +40,11 @@ export function SetupIntent() {
         {/* Payment Method */}
         <Grid size="large">
           <PaymentMethod />
+        </Grid>
+
+        {/* Create Setup Intent */}
+        <Grid size="large">
+          <CreateSetupIntent />
         </Grid>
 
       </Main>
