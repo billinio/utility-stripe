@@ -1,14 +1,14 @@
+import "./css/global.css";
+import "react-notifications-component/dist/theme.css";
+
 import { BrowserRouter } from "react-router-dom";
-import { config } from "system/config";
 import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import { Routes } from "routes";
 import React from "react";
 import ReactDOM from "react-dom";
 import ReactNotification from "react-notifications-component";
-
-import "./css/global.css";
-import "react-notifications-component/dist/theme.css";
+import { Routes } from "routes";
+import { config } from "system/config";
+import { loadStripe } from "@stripe/stripe-js";
 
 const publicKey = config.stripe.publicKey;
 const stripe = loadStripe(publicKey);

@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
-import { StripeStyle } from "system/constants";
 import * as Elements from "@stripe/react-stripe-js";
 import * as Stripe from "@stripe/stripe-js";
+
 import React, { useRef, useState } from "react";
 
 import { Alert } from "components/Alert";
@@ -12,8 +11,10 @@ import { Form } from "components/Form";
 import { Grid } from "components/Grid";
 import { Heading } from "components/Heading";
 import { Icon } from "components/Icon";
+import { Link } from "react-router-dom";
 import { Readonly } from "components/Form/Readonly";
 import { StripeElement } from "components/Form/StripeElement";
+import { StripeStyle } from "system/constants";
 import { Summary } from "components/Heading/Summary";
 import { useLoader } from "components/Loading";
 
@@ -93,7 +94,7 @@ export function PaymentMethod() {
             <Readonly value={paymentMethodId} placeholder="Payment Method ID" reference={ref} />
           </Grid>
         )}
-        
+
       </Form>
     </Box>
   );

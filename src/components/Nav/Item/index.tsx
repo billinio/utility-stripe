@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
-import classNames from "classnames";
-import React from "react";
 
+import React from "react";
+import classNames from "classnames";
 import style from "./style.module.css";
 
 interface Props {

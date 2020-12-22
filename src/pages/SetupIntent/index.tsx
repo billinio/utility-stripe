@@ -6,9 +6,8 @@ import { Grid } from "components/Grid";
 import { Heading } from "components/Heading";
 import { Icon } from "components/Icon";
 import { Main } from "components/Layout/Main";
-import { Sidebar } from "components/Layout/Sidebar";
-
 import { PaymentMethod } from "elements/PaymentMethod";
+import { Sidebar } from "components/Layout/Sidebar";
 
 export function SetupIntent() {
   const history = useHistory();

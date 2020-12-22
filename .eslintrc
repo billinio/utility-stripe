@@ -43,6 +43,12 @@
       }
     ],
     "react/no-unescaped-entities": "off",
+    "sort-imports": [
+      "error",
+      {
+        "allowSeparatedGroups": true
+      }
+    ],
     "comma-dangle": [
       "error",
       "always-multiline"
