@@ -39,6 +39,7 @@
   --font-size-medium: 22px;
   --font-family-default: 'Camphor', sans-serif;
   --font-family-brand: 'K2D', sans-serif;
+  --font-family-code: 'Source Code Pro', monospace;
 }
 
 /*
@@ -72,6 +73,17 @@ body {
 }
 ::placeholder {
   color: var(--color-placeholder);
+}
+
+/*
+  Typography
+*/
+code {
+  padding: 1px var(--dimension-spacing-tiny) 2px;
+  font-family: var(--font-family-code);
+  background: var(--color-orange-light);
+  color: var(--color-orange-default);
+  font-size: var(--font-size-small)
 }
 
 /*

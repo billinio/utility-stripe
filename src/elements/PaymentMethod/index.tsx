@@ -1,8 +1,7 @@
 import { StripeStyle } from "system/constants";
 import * as Elements from "@stripe/react-stripe-js";
 import * as Stripe from "@stripe/stripe-js";
-import delay from "delay";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { Box } from "components/Box";
@@ -14,16 +13,24 @@ import { Summary } from "components/Heading/Summary";
 import { Aside } from "components/Heading/Aside";
 import { Form } from "components/Form";
 import { Icon } from "components/Icon";
+import { Readonly } from "components/Form/Readonly";
 
 export function PaymentMethod() {
   const [loading, setLoading] = useState(false);
   const [paymentMethodId, setPaymentMethodId] = useState("");
   const elements = Elements.useElements() as Stripe.StripeElements;
   const stripe = Elements.useStripe() as Stripe.Stripe;
+  const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
 
   //
   // Utils
   //
+  const copy = () => {
+    ref.current.focus();
+    ref.current.select();
+    document.execCommand("copy");
+  };
+
   const isLoading = () => {
     setLoading(true);
     NProgress.start();
@@ -39,17 +46,28 @@ export function PaymentMethod() {
   //
   const reset = () => {
     const card = elements.getElement(Elements.CardNumberElement) as Stripe.StripeCardNumberElement;
+    const exp = elements.getElement(Elements.CardExpiryElement) as Stripe.StripeCardExpiryElement;
     card.clear();
+    exp.clear();
     setPaymentMethodId("");
   };
 
   const onSubmit = async () => {
     isLoading();
     try {
-      await delay(1000);
-      setPaymentMethodId("pm_1733737262626346325");
+      const { error, paymentMethod } = await stripe.createPaymentMethod({
+        type: "card",
+        card: elements.getElement(Elements.CardNumberElement) as Stripe.StripeCardNumberElement,
+      });
       isLoaded();
+      if (error) {
+        alert(error.message);
+      } else if (paymentMethod) {
+        setPaymentMethodId(paymentMethod.id);
+        copy();
+      }
     } catch (error) {
+      alert(error.message);
       isLoaded();
     }
   };
@@ -62,13 +80,12 @@ export function PaymentMethod() {
       <Heading type="h2" title="Payment Method">
         <Aside>
           <Link to="/setup-intent" onClick={reset}>
-            <Icon color="blue" icon="fas fa-undo-alt" tooltip="Reset form" />
+            <Icon size="small" color="blue" icon="fas fa-undo-alt" tooltip="Reset form" />
           </Link>
         </Aside>
         <Summary>
-          Dolor sit amet consectetur adipisicing elit. Nisi debitis reprehenderit reiciendis iure id, ut optio recusandae
-          iste perferendis quaerat itaque impedit inventore architecto. Reiciendis iure id, ut optio recusandae iste
-          perferendis perspiciatis quaerat itaque impedit. <a href="https://stripe.com/docs/payments/payment-methods" target="_blank" rel="noreferrer">Find out more</a>.
+          Collect customer card details and convert into a Stripe <a href="https://stripe.com/docs/api/payment_methods" target="_blank" rel="noreferrer">Payment Method</a> that can be
+          used later to make payments or assign to a customer. This form will return a <code>payment_method.id</code>.
         </Summary>
       </Heading>
 
@@ -77,12 +94,17 @@ export function PaymentMethod() {
           <StripeElement>
             <Elements.CardNumberElement options={{ style: StripeStyle, showIcon: true }} />
           </StripeElement>
+          <StripeElement>
+            <Elements.CardExpiryElement options={{ style: StripeStyle }} />
+          </StripeElement>
+        </Grid>
+        <Grid>
           <Button loading={loading}>Submit</Button>
         </Grid>
 
         {paymentMethodId && (
           <Grid>
-            {paymentMethodId}
+            <Readonly value={paymentMethodId} placeholder="Payment Method ID" reference={ref} />
           </Grid>
         )}
         
