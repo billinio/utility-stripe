@@ -16,6 +16,7 @@ import { Readonly } from "components/Form/Readonly";
 import { StripeElement } from "components/Form/StripeElement";
 import { StripeStyle } from "system/constants";
 import { Summary } from "components/Heading/Summary";
+import style from "./style.module.css";
 import { useLoader } from "components/Loading";
 
 export function PaymentMethod() {
@@ -63,39 +64,45 @@ export function PaymentMethod() {
   // Render
   //
   return (
-    <Box>
-      <Heading type="h2" title="Payment Method">
-        <Aside>
-          <Link to="/setup-intent" onClick={onReset}>
-            <Icon size="small" color="blue" icon="fas fa-undo-alt" tooltip="Reset form" />
-          </Link>
-        </Aside>
-        <Summary>
-          Collect a customer's card details and convert into a Stripe <a href="https://stripe.com/docs/api/payment_methods" target="_blank" rel="noreferrer">Payment Method</a> that can be
-          used later to make payments or assign to a customer. This form will return a <code>payment_method.id</code>.
-        </Summary>
-      </Heading>
+    <Box classNames={style.container}>
+      <div className={style.form}>
+        <Heading type="h2" title="Payment Method">
+          <Aside>
+            <Link to="/setup-intent" onClick={onReset}>
+              <Icon size="small" color="blue" icon="fas fa-undo-alt" tooltip="Reset form" />
+            </Link>
+          </Aside>
+          <Summary>
+            Collect a customer's card details and convert into a Stripe <a href="https://stripe.com/docs/api/payment_methods" target="_blank" rel="noreferrer">Payment Method</a> that can be
+            used later to make payments or assign to a customer. This form will return a <code>payment_method.id</code>.
+          </Summary>
+        </Heading>
 
-      <Form onSubmit={onSubmit}>
-        <Grid layout="small-right">
-          <StripeElement>
-            <Elements.CardNumberElement options={{ style: StripeStyle, showIcon: true }} />
-          </StripeElement>
-          <StripeElement>
-            <Elements.CardExpiryElement options={{ style: StripeStyle }} />
-          </StripeElement>
-        </Grid>
-        <Grid>
-          <Button loading={loader.isLoading}>Get Payment Method ID</Button>
-        </Grid>
-
-        {paymentMethodId && (
-          <Grid>
-            <Readonly value={paymentMethodId} placeholder="Payment Method ID" reference={ref} />
+        <Form onSubmit={onSubmit}>
+          <Grid layout="small-right">
+            <StripeElement>
+              <Elements.CardNumberElement options={{ style: StripeStyle, showIcon: true }} />
+            </StripeElement>
+            <StripeElement>
+              <Elements.CardExpiryElement options={{ style: StripeStyle }} />
+            </StripeElement>
           </Grid>
-        )}
+          <Grid>
+            <Button loading={loader.isLoading}>Get Payment Method ID</Button>
+          </Grid>
 
-      </Form>
+          {paymentMethodId && (
+            <Grid>
+              <Readonly value={paymentMethodId} placeholder="Payment Method ID" reference={ref} />
+            </Grid>
+          )}
+
+        </Form>
+      </div>
+      <div className={style.cards}>
+        <Heading type="h3" title="Test Cards" />
+        cards here...
+      </div>
     </Box>
   );
 

@@ -9,6 +9,9 @@
 .h2 {
   margin-bottom: var(--dimension-spacing-medium);
 }
+.h3 {
+  margin-bottom: var(--dimension-spacing-small);
+}
 
 .title {
   font-family: var(--font-family-default);
@@ -23,6 +26,11 @@
 }
 .h2 .title {
   font-size: var(--font-size-medium);
+  font-weight: 500;
+  color: var(--color-foreground);
+}
+.h3 .title {
+  font-size: 18px;
   font-weight: 500;
   color: var(--color-foreground);
 }
