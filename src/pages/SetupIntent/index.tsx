@@ -48,7 +48,9 @@ export function SetupIntent() {
         </Grid>
 
       </Main>
-      <Sidebar>Sidebar</Sidebar>
+      <Sidebar>
+        <Heading type="h3" title="Customer" />
+      </Sidebar>
     </>
   );
 

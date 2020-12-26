@@ -1,6 +1,6 @@
 .container {
   width: 400px;
-  padding: var(--dimension-spacing-large) 0;
+  padding: var(--dimension-spacing-large);
   background: var(--color-white);
   flex-grow: 0;
   flex-shrink: 0;
