@@ -16,6 +16,7 @@ import { Readonly } from "components/Form/Readonly";
 import { StripeElement } from "components/Form/StripeElement";
 import { StripeStyle } from "system/constants";
 import { Summary } from "components/Heading/Summary";
+import { TestCard } from "components/TestCard";
 import style from "./style.module.css";
 import { useLoader } from "components/Loading";
 
@@ -101,7 +102,26 @@ export function PaymentMethod() {
       </div>
       <div className={style.cards}>
         <Heading type="h3" title="Test Cards" />
-        cards here...
+        <TestCard
+          number="5555 5555 5555 4444"
+          description="Always successful without SCA prompts."
+          icon="fab fa-cc-mastercard"
+        />
+        <TestCard
+          number="4000 0027 6000 3184"
+          description="PSD2 always required."
+          icon="fab fa-cc-visa"
+        />
+        <TestCard
+          number="4000 0025 0000 3155"
+          description="PSD2 required on setup intent only."
+          icon="fab fa-cc-visa"
+        />
+        <TestCard
+          number="4000 0000 0000 3220"
+          description="3DS always required."
+          icon="fab fa-cc-visa"
+        />
       </div>
     </Box>
   );

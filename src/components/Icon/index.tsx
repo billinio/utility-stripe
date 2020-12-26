@@ -12,7 +12,7 @@ interface Props {
 export function Icon({ color = "white", size = "default", icon, tooltip }: Props) {
 
   return (
-    <div className={classNames(style.container, style[color], style[size])}>
+    <div className={classNames("bio__icon", style.container, style[color], style[size])}>
       <i className={icon} />
       {tooltip && (
         <div className={style.tooltip}>

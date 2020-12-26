@@ -36,6 +36,7 @@ export function Readonly({ placeholder, value, type = "input", reference, rows =
         className={style.field}
         value={value}
         rows={rows}
+        wrap="soft"
       />
     </div>
   );
