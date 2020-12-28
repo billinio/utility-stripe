@@ -13,9 +13,7 @@ import { JsonToString } from "system/util";
 import { Link } from "react-router-dom";
 import { Readonly } from "components/Form/Readonly";
 import { Summary } from "components/Heading/Summary";
-import axios from "axios";
-import { config } from "system/config";
-import qs from "qs";
+import { stripe } from "services/stripe";
 import { useLoader } from "components/Loading";
 
 export function CreateSetupIntent() {
@@ -39,23 +37,11 @@ export function CreateSetupIntent() {
   const onSubmit = async () => {
     loader.loading();
     try {
-      const request = await axios({
-        method: "POST",
-        url: "https://api.stripe.com/v1/setup_intents",
-        data: qs.stringify({
-          confirm: true,
-          payment_method: paymentMethodId,
-          usage: "off_session",
-        }),
-        headers: {
-          Authorization: `Bearer ${config.stripe.secretKey}`,
-          "content-type": "application/x-www-form-urlencoded",
-        },
-      });
+      const request = await stripe.createSetupIntent(paymentMethodId);
       loader.loaded();
-      setClientSecret(request.data.client_secret);
-      setStatus(request.data.status);
-      setNextAction(JsonToString(request.data.next_action));
+      setClientSecret(request.client_secret);
+      setStatus(request.status);
+      setNextAction(JsonToString(request.next_action));
       Alert.info("Copied to clipboard", "Client Secret");
       ref.current.focus();
       ref.current.select();
