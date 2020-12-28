@@ -62,9 +62,6 @@
 .guest .iconGuest {
   display: block;
 }
-.guest .label {
-  display: none;
-}
 .guest .anon {
   display: none;
 }
