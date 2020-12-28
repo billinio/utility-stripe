@@ -101,7 +101,7 @@ export function PaymentMethod() {
         </Form>
       </div>
       <div className={style.cards}>
-        <Heading type="h3" title="Test Cards" />
+        <Heading type="h4" title="Test Cards" />
         <TestCard
           number="5555 5555 5555 4444"
           description="Always successful without SCA prompts."

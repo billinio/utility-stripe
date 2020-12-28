@@ -4,7 +4,7 @@ import style from "./style.module.css";
 
 interface Props {
   children?: React.ReactNode;
-  type?: "h1" | "h2" | "h3";
+  type?: "h1" | "h2" | "h3" | "h4";
   title: string;
 }
 

@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 
 import { Aside } from "components/Heading/Aside";
 import { CreateSetupIntent } from "elements/CreateSetupIntent";
+import { Customer } from "components/Customer";
 import { Grid } from "components/Grid";
 import { Heading } from "components/Heading";
 import { Icon } from "components/Icon";
@@ -50,6 +51,7 @@ export function SetupIntent() {
       </Main>
       <Sidebar>
         <Heading type="h3" title="Customer" />
+        <Customer name="Jack Smith" />
       </Sidebar>
     </>
   );
