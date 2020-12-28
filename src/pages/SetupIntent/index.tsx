@@ -51,7 +51,7 @@ export function SetupIntent() {
       </Main>
       <Sidebar>
         <Heading type="h3" title="Customer" />
-        <Customer name="Jack Smith" />
+        <Customer />
       </Sidebar>
     </>
   );
