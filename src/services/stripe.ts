@@ -14,7 +14,7 @@ class Stripe {
   public async createSetupIntent(paymentMethodId: string): Promise<SetupIntent> {
     return this.request(
       "POST",
-      "https://api.stripe.com/v1/setup_intents",
+      "/setup_intents",
       {
         confirm: true,
         payment_method: paymentMethodId,
@@ -24,13 +24,27 @@ class Stripe {
   }
 
   /**
+   * List customers on Stripe (10 customers)
+   * 
+   * @see https://stripe.com/docs/api/customers/list
+   */
+  public async listCustomers() {
+    const request = await this.request(
+      "GET",
+      "/customers",
+    );
+    return request.data;
+  }
+
+  /**
    * Send the request to Stripe
    */
-  private async request(method: Method, url: string, data?: Dictionary) {
+  private async request(method: Method, endpoint: string, data?: Dictionary) {
     try {
+      console.log("CALLED");
       const request = await axios({
         method,
-        url,
+        url: `https://api.stripe.com/v1${endpoint}`,
         data: data && qs.stringify(data) || undefined,
         headers: {
           Authorization: `Bearer ${config.stripe.secretKey}`,

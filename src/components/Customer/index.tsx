@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Icon } from "components/Icon";
 import classNames from "classnames";
 import faker from "faker";
+import { stripe } from "services/stripe";
 import style from "./style.module.css";
 
 export function Customer() {
@@ -10,6 +11,14 @@ export function Customer() {
   const [lastName, setLastName] = useState(faker.name.lastName());
   const [email, setEmail] = useState(faker.internet.email());
   const [guest, setGuest] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const request = await stripe.listCustomers();
+      console.log(request);
+    };
+    fetchData();
+  }, []);
 
   const onGuestClick = () => {
     setGuest(true);
