@@ -4,6 +4,6 @@
  * 
  * @param data - JSON data to parse
  */
-export function JsonToString(data: Dictionary): string {
+export function JsonToString(data: Dictionary | null): string {
   return (data && JSON.stringify(data, undefined, 2)) || "";
 }

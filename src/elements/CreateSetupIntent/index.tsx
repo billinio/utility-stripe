@@ -39,7 +39,7 @@ export function CreateSetupIntent() {
     try {
       const request = await stripe.createSetupIntent(paymentMethodId);
       loader.loaded();
-      setClientSecret(request.client_secret);
+      setClientSecret(request.client_secret || "");
       setStatus(request.status);
       setNextAction(JsonToString(request.next_action));
       Alert.info("Copied to clipboard", "Client Secret");

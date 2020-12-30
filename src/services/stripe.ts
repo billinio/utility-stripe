@@ -1,5 +1,6 @@
 import axios, { Method } from "axios";
 
+import { SetupIntent } from "@stripe/stripe-js";
 import { config } from "system/config";
 import qs from "qs";
 
@@ -10,7 +11,7 @@ class Stripe {
    * 
    * @see https://stripe.com/docs/api/setup_intents/create
    */
-  public async createSetupIntent(paymentMethodId: string) {
+  public async createSetupIntent(paymentMethodId: string): Promise<SetupIntent> {
     try {
       return this.request(
         "POST",
