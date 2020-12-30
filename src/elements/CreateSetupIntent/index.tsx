@@ -47,7 +47,7 @@ export function CreateSetupIntent() {
       ref.current.select();
       document.execCommand("copy");
     } catch (error) {
-      Alert.error(error.response.data.error.message, "Something went wrong!");
+      Alert.error(error.message, "Something went wrong!");
       loader.loaded();
     }
   };
