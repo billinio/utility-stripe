@@ -63,7 +63,6 @@ class Stripe {
    */
   private async request(method: Method, endpoint: string, data?: Dictionary) {
     try {
-      console.log("CALLED");
       const request = await axios({
         method,
         url: `https://api.stripe.com/v1${endpoint}`,
