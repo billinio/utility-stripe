@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from "react";
+import { Types, stripe } from "services/stripe";
 
 import { Icon } from "components/Icon";
 import classNames from "classnames";
 import faker from "faker";
-import { stripe } from "services/stripe";
 import style from "./style.module.css";
+import { useLoader } from "components/Loading";
 
 export function Customer() {
+  const [customers, setCustomers] = useState<Types.Customer[]>([]);
   const [firstName, setFirstName] = useState(faker.name.firstName());
   const [lastName, setLastName] = useState(faker.name.lastName());
   const [email, setEmail] = useState(faker.internet.email());
   const [guest, setGuest] = useState(true);
+  const loader = useLoader();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const request = await stripe.listCustomers();
-      console.log(request);
-    };
-    fetchData();
+    loader.loading();
+    (async () => {
+      await getCustomers();
+      loader.loaded();
+    })();
   }, []);
 
   const onGuestClick = () => {
@@ -28,13 +31,20 @@ export function Customer() {
   };
 
   const onChangeClick = () => {
-    const customer = generateCustomerDetails();
+    // fetch user from list randonmly
     setGuest(false);
-    console.log(customer);
   };
 
-  const onCreateClick = () => {
-    console.log("Create customer...");
+  const onCreateClick = async () => {
+    loader.loading();
+    const customer = generateCustomerDetails();
+    const request = await stripe.createCustomer(
+      `${customer.firstName} ${customer.lastName}`,
+      customer.email,
+    );
+    await getCustomers();
+    loader.loaded();
+    setGuest(false);
   };
 
   const generateCustomerDetails = () => {
@@ -47,12 +57,23 @@ export function Customer() {
     return { firstName, lastName, email };
   };
 
+  const hasCustomers = (): boolean => {
+    return !!customers.length;
+  };
+
+  const getCustomers = async () => {
+    const list = await stripe.listCustomers();
+    setCustomers(list);
+  };
+
   return (
     <div className={style.container}>
       <section className={classNames(style.selected, guest ? style.guest : style.customer)}>
         <div className={style.avatar}>
           <i className={classNames(style.action, style.anon, "fas fa-user-secret")} onClick={onGuestClick} title="As a guest" />
-          <i className={classNames(style.action, style.change, "fas fa-sync-alt")} onClick={onChangeClick} title="Change customer" />
+          {hasCustomers() && (
+            <i className={classNames(style.action, style.change, "fas fa-sync-alt")} onClick={onChangeClick} title="Change customer" />
+          )}
           <i className={classNames(style.icon, style.iconCustomer, "fas fa-user")} />
           <i className={classNames(style.icon, style.iconGuest, "fas fa-user-secret")} />
         </div>

@@ -5,6 +5,8 @@ import { Stripe as Types } from "stripe";
 import { config } from "system/config";
 import qs from "qs";
 
+export { Types };
+
 class Stripe {
 
   /**
@@ -34,7 +36,20 @@ class Stripe {
       "GET",
       "/customers",
     );
-    return request.data;
+    return request.data || [];
+  }
+
+  /**
+   * Create a new customer on Stripe
+   * 
+   * @see https://stripe.com/docs/api/customers/create
+   */
+  public async createCustomer(name: string, email: string): Promise<Types.Customer> {
+    return this.request(
+      "POST",
+      "/customers",
+      { name, email },
+    );
   }
 
   /**
