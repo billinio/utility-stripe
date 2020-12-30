@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Types, stripe } from "services/stripe";
 
+import { Alert } from "components/Alert";
 import { Icon } from "components/Icon";
 import classNames from "classnames";
 import faker from "faker";
@@ -8,62 +9,88 @@ import style from "./style.module.css";
 import { useLoader } from "components/Loading";
 
 export function Customer() {
-  const [customers, setCustomers] = useState<Types.Customer[]>([]);
-  const [firstName, setFirstName] = useState(faker.name.firstName());
-  const [lastName, setLastName] = useState(faker.name.lastName());
-  const [email, setEmail] = useState(faker.internet.email());
-  const [guest, setGuest] = useState(true);
   const loader = useLoader();
+  const [customers, setCustomers] = useState<Types.Customer[]>([]);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [guest, setGuest] = useState(true);
+  const [creating, setCreating] = useState(false);
 
   useEffect(() => {
     loader.loading();
     (async () => {
-      await getCustomers();
+      await listCustomers();
       loader.loaded();
     })();
+    return function cleanup() {
+      setStorage(null);
+    };
   }, []);
 
   const onGuestClick = () => {
     setGuest(true);
-    setFirstName("");
-    setLastName("");
-    setEmail("");
+    setStorage(null);
+    Alert.info(
+      "Perform all requests as a guest",
+      "Guest activated",
+    );
   };
 
   const onChangeClick = () => {
-    // fetch user from list randonmly
+    if (!hasCustomers) {
+      return;
+    }
+    const customer = customers[Math.floor(Math.random() * customers.length)];
+    const name = customer.name!.split(" ");
+    const firstName = name[0];
+    const lastName = name[1];
+    setStorage(customer.id);
+    setFirstName(firstName);
+    setLastName(lastName);
+    setEmail(customer.email!);
     setGuest(false);
+    Alert.info(
+      `Perform all requests as ${firstName} ${lastName}`,
+      "Customer changed",
+    );
   };
 
   const onCreateClick = async () => {
     loader.loading();
-    const customer = generateCustomerDetails();
-    const request = await stripe.createCustomer(
-      `${customer.firstName} ${customer.lastName}`,
-      customer.email,
-    );
-    await getCustomers();
-    loader.loaded();
-    setGuest(false);
-  };
-
-  const generateCustomerDetails = () => {
+    setCreating(true);
     const firstName = faker.name.firstName();
     const lastName = faker.name.lastName();
     const email = faker.internet.email(firstName, lastName);
+    const customer = await stripe.createCustomer(firstName, lastName, email);
+    await listCustomers();
+    setStorage(customer.id);
     setFirstName(firstName);
     setLastName(lastName);
     setEmail(email);
-    return { firstName, lastName, email };
+    setGuest(false);
+    setCreating(false);
+    Alert.info(
+      `${firstName} ${lastName} created`,
+      "Customer created and assigned",
+    );
+    loader.loaded();
+  };
+
+  const listCustomers = async () => {
+    const list = await stripe.listCustomers();
+    setCustomers(list);
   };
 
   const hasCustomers = (): boolean => {
     return !!customers.length;
   };
 
-  const getCustomers = async () => {
-    const list = await stripe.listCustomers();
-    setCustomers(list);
+  const setStorage = (id: string | null) => {
+    if (!id) {
+      return sessionStorage.removeItem("customer_id");
+    }
+    return sessionStorage.setItem("customer_id", id);
   };
 
   return (
@@ -86,11 +113,20 @@ export function Customer() {
       </section>
 
       <section className={style.buttons}>
-        <div className={style.button} onClick={onCreateClick}>
+        <div className={classNames(style.button, !creating || style.disabled)} onClick={onCreateClick}>
           <Icon color="orange" icon="fas fa-user-plus" />
           <div className={style.details}>
-            <p className={style.title}>Create new customer</p>
-            <small className={style.desc}>Create random customer on Stripe</small>
+            {creating ? (
+              <>
+                <p className={style.title}>Creating customer</p>
+                <small className={style.desc}>Please wait...</small>
+              </>
+            ) : (
+                <>
+                <p className={style.title}>Create new customer</p>
+                <small className={style.desc}>Create random customer on Stripe</small>
+                </>
+              )}
           </div>
         </div>
       </section>
