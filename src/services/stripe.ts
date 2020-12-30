@@ -22,6 +22,7 @@ class Stripe {
         confirm: true,
         payment_method: paymentMethodId,
         usage: "off_session",
+        customer: sessionStorage.getItem("customer_id") || undefined,
       },
     );
   }

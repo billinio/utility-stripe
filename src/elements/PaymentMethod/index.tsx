@@ -18,7 +18,7 @@ import { StripeStyle } from "system/constants";
 import { Summary } from "components/Heading/Summary";
 import { TestCard } from "components/TestCard";
 import style from "./style.module.css";
-import { useLoader } from "components/Loading";
+import { useLoader } from "components/Loader";
 
 export function PaymentMethod() {
   const [paymentMethodId, setPaymentMethodId] = useState("");

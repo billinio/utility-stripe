@@ -6,7 +6,7 @@ import { Icon } from "components/Icon";
 import classNames from "classnames";
 import faker from "faker";
 import style from "./style.module.css";
-import { useLoader } from "components/Loading";
+import { useLoader } from "components/Loader";
 
 export function Customer() {
   const loader = useLoader();
@@ -19,6 +19,7 @@ export function Customer() {
 
   useEffect(() => {
     loader.loading();
+    setStorage(null);
     (async () => {
       await listCustomers();
       loader.loaded();

@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import { Readonly } from "components/Form/Readonly";
 import { Summary } from "components/Heading/Summary";
 import { stripe } from "services/stripe";
-import { useLoader } from "components/Loading";
+import { useLoader } from "components/Loader";
 
 export function CreateSetupIntent() {
   const [clientSecret, setClientSecret] = useState("");
