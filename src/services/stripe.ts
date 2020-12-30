@@ -1,6 +1,7 @@
 import axios, { Method } from "axios";
 
 import { SetupIntent } from "@stripe/stripe-js";
+import { Stripe as Types } from "stripe";
 import { config } from "system/config";
 import qs from "qs";
 
@@ -28,7 +29,7 @@ class Stripe {
    * 
    * @see https://stripe.com/docs/api/customers/list
    */
-  public async listCustomers() {
+  public async listCustomers(): Promise<Types.Customer[]> {
     const request = await this.request(
       "GET",
       "/customers",

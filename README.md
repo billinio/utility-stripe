@@ -64,4 +64,19 @@ $ npm start
 # Browser opens at https://localhost
 ```
 
-## 
+## Build
+
+**Build the production ready app:**
+
+```shell
+$ npm run build
+# Compiles to the /build folder
+```
+
+**To test this build locally, run the following from the root (NOT the ./build folder):**
+
+```shell
+$ npx serve
+# Open up http://localhost:5000
+```
+
