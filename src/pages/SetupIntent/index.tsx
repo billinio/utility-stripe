@@ -2,6 +2,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import React, { useEffect } from "react";
 
 import { Aside } from "components/Heading/Aside";
+import { ConfirmSetupIntent } from "elements/ConfirmSetupIntent";
 import { CreateSetupIntent } from "elements/CreateSetupIntent";
 import { Customer } from "components/Customer";
 import { Grid } from "components/Grid";
@@ -46,6 +47,11 @@ export function SetupIntent() {
         {/* Create Setup Intent */}
         <Grid size="large">
           <CreateSetupIntent />
+        </Grid>
+
+        {/* Confirm Setup Intent */}
+        <Grid size="large">
+          <ConfirmSetupIntent />
         </Grid>
 
       </Main>
