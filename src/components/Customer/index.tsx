@@ -87,6 +87,13 @@ export function Customer() {
     return !!customers.length;
   };
 
+  const showChangeCustomer = (): boolean => {
+    if (!hasCustomers()) {
+      return false;
+    }
+    return customers.length > 1 || guest;
+  };
+
   const setStorage = (id: string | null) => {
     if (!id) {
       return sessionStorage.removeItem("customer_id");
@@ -99,7 +106,7 @@ export function Customer() {
       <section className={classNames(style.selected, guest ? style.guest : style.customer)}>
         <div className={style.avatar}>
           <i className={classNames(style.action, style.anon, "fas fa-user-secret")} onClick={onGuestClick} title="As a guest" />
-          {hasCustomers() && (
+          {showChangeCustomer() && (
             <i className={classNames(style.action, style.change, "fas fa-sync-alt")} onClick={onChangeClick} title="Change customer" />
           )}
           <i className={classNames(style.icon, style.iconCustomer, "fas fa-user")} />
