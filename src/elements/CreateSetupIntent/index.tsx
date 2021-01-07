@@ -75,7 +75,7 @@ export function CreateSetupIntent() {
       </Heading>
 
       <Form onSubmit={onSubmit}>
-        <Grid layout="small-right">
+        <Grid>
           <Input value={paymentMethodId} placeholder="Payment Method ID" onChange={onPaymentMethodIdChange} />
         </Grid>
         <Grid>

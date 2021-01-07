@@ -1,0 +1,11 @@
+.container {
+  position: relative;
+}
+.field {
+  width: 100%;
+  height: var(--dimension-form-input);
+  padding-left: var(--dimension-spacing-small);
+  padding-right: var(--dimension-spacing-small);
+  border: solid 1px var(--color-nav-off);
+  border-radius: var(--dimension-border-radius);
+}

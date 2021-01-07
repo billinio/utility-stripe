@@ -1,6 +1,6 @@
+import { PaymentIntent, SetupIntent } from "@stripe/stripe-js";
 import axios, { Method } from "axios";
 
-import { SetupIntent } from "@stripe/stripe-js";
 import { Stripe as Types } from "stripe";
 import { config } from "system/config";
 import qs from "qs";
@@ -24,6 +24,29 @@ class Stripe {
         usage: "off_session",
         customer: sessionStorage.getItem("customer_id") || undefined,
       },
+    );
+  }
+
+  /**
+   * Create a Payment Intent
+   * 
+   * @see https://stripe.com/docs/api/payment_intents/create
+   */
+  public async createPaymentIntent(amount: string, currency: string, paymentMethodId?: string): Promise<PaymentIntent> {
+    const customerId = sessionStorage.getItem("customer_id");
+    const payload: Dictionary = {
+      amount: Math.round(100 * parseFloat(amount.replace(/[$,]/g, ""))),
+      currency,
+    };
+    if (customerId) {
+      payload.customer = customerId;
+    } else if (paymentMethodId) {
+      payload.payment_method = paymentMethodId;
+    }
+    return this.request(
+      "POST",
+      "/payment_intents",
+      payload,
     );
   }
 

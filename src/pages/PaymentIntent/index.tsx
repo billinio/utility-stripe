@@ -35,9 +35,9 @@ export function PaymentIntent() {
         </Heading>
 
         {/* Payment Method */}
-        {/* <Grid size="large">
+        <Grid size="large">
           <PaymentMethod />
-        </Grid> */}
+        </Grid>
 
         {/* Create Payment Intent */}
         <Grid size="large">
