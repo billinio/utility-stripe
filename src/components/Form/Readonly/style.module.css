@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  position: relative;
+}
+.label {
+  background: #f7f7f7;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-muted);
+  left: var(--dimension-spacing-small);
+  top: 8px;
+  position: absolute;
+}
+.field {
+  width: 100%;
+  padding: 26px var(--dimension-spacing-small) var(--dimension-spacing-tiny);
+  border: 0;
+  border-bottom: dashed 1px var(--color-nav-off);
+  font-family: var(--font-family-code);
+  color: var(--color-muted);
+  text-shadow: 1px 1px 1px #fff;
+  background: #f7f7f7;
+  border-radius: var(--dimension-border-radius);
+}
+.textarea {
+  font-size: var(--font-size-small);
+}

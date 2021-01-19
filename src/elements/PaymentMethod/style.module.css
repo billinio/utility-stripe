@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+}
+.form {
+  flex-grow: 2;
+  flex-shrink: 0;
+  flex-basis: 0;
+}
+.cards {
+  margin-left: var(--dimension-spacing-medium);
+  padding: var(--dimension-spacing-medium);
+  background: var(--color-nav-background);
+  border-radius: var(--dimension-border-radius);
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 350px;
+}

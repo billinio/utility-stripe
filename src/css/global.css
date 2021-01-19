@@ -1,0 +1,109 @@
+/*
+  Variables
+*/
+:root {
+  /* Colours */
+  --color-background: #e8f0f9;
+  --color-foreground: #0c145a;
+  --color-text: #525f7f;
+  --color-brand: #3546ab;
+  --color-placeholder: #c0c2d5;
+  --color-muted: #8f93b3;
+  --color-white: #fff;
+
+  --color-nav-background: #eff4ff;
+  --color-nav-off: #d4dae9;
+  --color-nav-on: var(--color-brand);
+
+  --color-blue-default: #506afe;
+  --color-blue-light: #e8ebfb;
+
+  --color-orange-default: #f0582e;
+  --color-orange-light: #fde7e0;
+
+  --color-error: #e72d3d;
+
+  /* Dimensions */
+  --dimension-border-radius: 10px;
+  --dimension-spacing-large: 36px;
+  --dimension-spacing-medium: 24px;
+  --dimension-spacing-small: 12px;
+  --dimension-spacing-tiny: 6px;
+  --dimension-nav: 57px;
+  --dimension-form-input: 45px;
+  
+  /* Fonts */
+  --font-size-default: 16px;
+  --font-size-small: 14px;
+  --font-size-large: 28px;
+  --font-size-medium: 22px;
+  --font-family-default: 'Camphor', sans-serif;
+  --font-family-brand: 'K2D', sans-serif;
+  --font-family-code: 'Source Code Pro', monospace;
+}
+
+/*
+  Reset
+*/
+*, ::before, ::after { box-sizing: border-box }
+ul[class], ol[class], fieldset { padding: 0 }
+body, h1, h2, h3, h4, p, ul[class], ol[class], li, i, figure, figcaption, blockquote, dl, dd, fieldset { margin: 0; font-weight: 400; font-style: normal; }
+body { min-height: 100vh; scroll-behavior: smooth; text-rendering: optimizeSpeed; line-height: 1.7 }
+ul[class], ol[class] { list-style: none }
+a:not([class]) { text-decoration-skip-ink: auto }
+img { max-width:100%; border: 0; display: block }
+input, button, textarea,select { font: inherit }
+:focus, fieldset { outline:none }
+fieldset { min-width: 0; border:0 }
+body:not(:-moz-handler-blocked) fieldset { display: table-cell }
+a, a:visited, a:visited:hover, a:active { text-decoration: none }
+@media (prefers-reduced-motion: reduce) {*{ animation-duration: .01ms!important; animation-iteration-count: 1!important; transition-duration: .01ms!important; scroll-behavior: auto!important }}
+
+/*
+  General
+*/
+#root {
+  height: 100vh
+}
+body {
+  background: var(--color-background);
+  font-family: var(--font-family-default);
+  font-size: var(--font-size-default);
+  color: var(--color-foreground);
+}
+::placeholder {
+  color: var(--color-placeholder);
+}
+
+/*
+  Typography
+*/
+code {
+  padding: 1px var(--dimension-spacing-tiny) 3px;
+  font-family: var(--font-family-code);
+  background: var(--color-orange-light);
+  color: var(--color-orange-default);
+  font-size: var(--font-size-small);
+  border-radius: 4px
+}
+
+/*
+  Hyperlinks
+*/
+a, a:visited, a:active {
+  color: var(--color-blue-default);
+  text-decoration: none !important;
+  cursor: pointer;
+}
+a:hover, a:visited:hover {
+  color: var(--color-foreground)
+}
+
+/*
+  Vendor
+*/
+#nprogress .bar {
+  height: 4px;
+  background: var(--color-orange-default);
+}
+#nprogress .spinner, #nprogress .peg { display: none }

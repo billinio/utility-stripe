@@ -1,0 +1,74 @@
+.container {
+  border-radius: var(--dimension-border-radius);
+  text-decoration: none !important;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+.tooltip {
+  margin-top: 2px;
+  padding: 4px 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--color-white);
+  font-size: var(--font-size-small);
+  border-radius: 100px;
+  white-space: nowrap;
+  position: absolute;
+  z-index: 200;
+  cursor: default;
+  display: none
+}
+.tooltip i {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.7);
+  transform: translateX(-50%);
+  left: 50%;
+  top: -5px;
+  position: absolute;
+}
+.container:hover .tooltip {
+  display: block
+}
+
+/*
+  Sizes
+*/
+.default {
+  --size: 40px;
+  width: var(--size);
+  height: var(--size);
+  font-size: 16px;
+}
+.default .tooltip {
+  top: var(--size);
+}
+.small {
+  --size: 34px;
+  width: var(--size);
+  height: var(--size);
+  font-size: 14px;
+}
+.small .tooltip {
+  top: var(--size);
+}
+
+/*
+  Colors
+*/
+.blue {
+  background: var(--color-blue-light);
+  color: var(--color-blue-default) !important;
+}
+.orange {
+  background: var(--color-orange-light);
+  color: var(--color-orange-default) !important;
+}
+.white {
+  background: var(--color-white);
+  color: var(--color-muted) !important;
+}

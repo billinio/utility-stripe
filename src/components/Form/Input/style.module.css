@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+}
+.icon {
+  width: var(--dimension-form-input);
+  background: var(--color-nav-background);
+  border-radius: var(--dimension-border-radius);
+  border: solid 1px var(--color-nav-off);
+  color: var(--color-text);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.field {
+  width: 100%;
+  height: var(--dimension-form-input);
+  padding-left: var(--dimension-spacing-small);
+  padding-right: var(--dimension-spacing-small);
+  border: solid 1px var(--color-nav-off);
+  border-radius: var(--dimension-border-radius);
+}
+.icon+.field {
+  padding-left: calc( var(--dimension-form-input) + var(--dimension-spacing-small))
+}

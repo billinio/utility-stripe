@@ -1,0 +1,44 @@
+.container {
+  width: var(--dimension-nav);
+  height: var(--dimension-nav);
+  margin-bottom: var(--dimension-spacing-medium);
+  border: solid 1px transparent;
+  border-radius: var(--dimension-border-radius);
+  color: var(--color-nav-off) !important;
+  font-size: 24px;
+  text-decoration: none !important;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+.container:hover {
+  border: solid 1px var(--color-nav-off);
+  border-right-color: var(--color-nav-background);
+  border-radius: var(--dimension-border-radius) 0 0 var(--dimension-border-radius);
+}
+.container:hover, .container.active {
+  color: var(--color-brand) !important;
+  background: var(--color-nav-background);
+}
+
+.label {
+  height: var(--dimension-nav);
+  padding-right: var(--dimension-spacing-medium);
+  background: var(--color-nav-background);
+  border: solid 1px var(--color-nav-off);
+  border-left: 0;
+  border-radius: 0 var(--dimension-border-radius) var(--dimension-border-radius) 0;
+  font-size: var(--font-size-default);
+  white-space: nowrap;
+  transform: translateX(-1px);
+  left: var(--dimension-nav);
+  top: -1px;
+  position: absolute;
+  align-items: center;
+  displaY: none;
+}
+.container:hover .label {
+  display: flex
+}

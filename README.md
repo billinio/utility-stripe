@@ -1,46 +1,82 @@
-# Getting Started with Create React App
+# Stripe PSD2 Utility
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Simple UI to retrieve tokens from Stripe. This utility fully supports:
 
-## Available Scripts
+- [SCA](https://en.wikipedia.org/wiki/Strong_customer_authentication) (Strong Customer Authentication)
+- [PSD2](https://en.wikipedia.org/wiki/Payment_Services_Directive#Revised_Directive_on_Payment_Services_(PSD2)) (Payment Services Directive)
+- [3DS](https://en.wikipedia.org/wiki/3-D_Secure) (3-D Secure)
+- [3DS2](https://en.wikipedia.org/wiki/3-D_Secure#3-D_Secure_2.0) (3-D Secure 2.0)
 
-In the project directory, you can run:
+**IMPORTANT**
+**Stripe Utility is only intended to be run locally as a useful development utility. Do not use in a public environment as it requires secret keys that should never be exposed to the world.** 
 
-### `npm start`
+**You should only use test Stripe API Keys. You will receive a warning if using a live key.**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-----
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Requirements
 
-### `npm test`
+- [Node.js](https://nodejs.org/en/) 15.4+
+- [npm](https://www.npmjs.com/) 7+
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup
 
-### `npm run build`
+**Clone the repo locally:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```shell
+$ git clone git@github.com:billinio/utility-stripe.git
+$ cd ./utility-stripe
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Install the node dependencies:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```shell
+$ npm install
+```
 
-### `npm run eject`
+*This app must run under SSL. To create a locally self-signed SSL certificate for `localhost` follow [these instructions](https://gist.github.com/thekeogh/ed785cc0e8125731a6ff7fff306bc47e).*
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Install the generated `server.key` and `server.crt` to a root folder named `ssl/`:**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```shell
+$ cp server.key ./ssl && cp server.crt ./ssl
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Create a `.env.local` file:**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```shell
+$ touch .env.local
+```
 
-## Learn More
+**Copy the following in to your `.env.local` file:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```shell
+REACT_APP_STRIPE_PUBLISHABLE_KEY=[your_public_stripe_key]
+REACT_APP_STRIPE_SECRET_KEY=[your_secret_stripe_key]
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+*Do not use Stripe Utility in a public environment as it requires secret keys that should never be exposed to the world.*
+
+**Start the server:**
+
+```shell
+$ npm start
+# Browser opens at https://localhost
+```
+
+## Build
+
+**Build the production ready app:**
+
+```shell
+$ npm run build
+# Compiles to the /build folder
+```
+
+**To test this build locally, run the following from the root (NOT the ./build folder):**
+
+```shell
+$ npx serve
+# Open up http://localhost:5000
+```
+

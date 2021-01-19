@@ -1,0 +1,8 @@
+.container {
+  width: 350px;
+  padding: var(--dimension-spacing-large);
+  background: var(--color-white);
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 350px;
+}
