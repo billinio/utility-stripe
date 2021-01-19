@@ -132,10 +132,10 @@ export function CreatePaymentIntent() {
         {clientSecret && (
           <>
             <Grid>
-              <Readonly value={paymentIntentId} placeholder="Payment Intent ID" reference={ref} />
+              <Readonly value={clientSecret} placeholder="Client Secret" reference={ref} />
             </Grid>
             <Grid layout="small-right">
-              <Readonly value={clientSecret} placeholder="Client Secret" />
+              <Readonly value={paymentIntentId} placeholder="Payment Intent ID" />
               <Readonly value={status} placeholder="Status" />
             </Grid>
             {nextAction && (

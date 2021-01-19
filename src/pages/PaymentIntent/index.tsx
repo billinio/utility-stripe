@@ -2,6 +2,7 @@ import { Link, useHistory } from "react-router-dom";
 import React, { useEffect } from "react";
 
 import { Aside } from "components/Heading/Aside";
+import { ConfirmCardPayment } from "elements/ConfirmCardPayment";
 import { CreatePaymentIntent } from "elements/CreatePaymentIntent";
 import { Customer } from "components/Customer";
 import { Grid } from "components/Grid";
@@ -42,6 +43,11 @@ export function PaymentIntent() {
         {/* Create Payment Intent */}
         <Grid size="large">
           <CreatePaymentIntent />
+        </Grid>
+
+        {/* Confirm Card Payment */}
+        <Grid size="large">
+          <ConfirmCardPayment />
         </Grid>
 
       </Main>
