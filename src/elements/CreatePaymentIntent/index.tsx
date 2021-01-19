@@ -85,7 +85,6 @@ export function CreatePaymentIntent() {
   //
   // Renders
   //
-
   const currencySymbol = (): string => {
     switch (currency) {
       case "USD":
