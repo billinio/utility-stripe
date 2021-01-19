@@ -83,7 +83,9 @@ export function ConfirmCardPayment() {
           </Link>
         </Aside>
         <Summary>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam dolor nihil quia facere quae. Expedita, eum suscipit consequuntur ratione officiis omnis quam voluptates nulla sed nesciunt quas mollitia dolore sunt.
+          Now the intent to pay has been requested, we need to <a href="https://stripe.com/docs/js/payment_intents/confirm_card_payment" target="_blank" rel="noreferrer">confirm this payment</a> to
+          allow the customer to verify any PSD2/3DS/3DS2 prompts (if applicable). <code>payment_method.id</code> is only required for members to confirm the card 
+          the customer wants to use (as they may have multiple).
         </Summary>
       </Heading>
 

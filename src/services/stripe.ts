@@ -51,6 +51,18 @@ class Stripe {
   }
 
   /**
+   * Confirm a Payment Intent
+   * 
+   * @see https://stripe.com/docs/api/payment_intents/confirm
+   */
+  public async confirmPaymentIntent(paymentIntentId: string): Promise<PaymentIntent> {
+    return this.request(
+      "POST",
+      `/payment_intents/${paymentIntentId}/confirm`,
+    );
+  }
+
+  /**
    * List customers on Stripe
    * 
    * @see https://stripe.com/docs/api/customers/list

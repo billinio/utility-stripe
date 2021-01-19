@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 
 import { Aside } from "components/Heading/Aside";
 import { ConfirmCardPayment } from "elements/ConfirmCardPayment";
+import { ConfirmPaymentIntent } from "elements/ConfirmPaymentIntent";
 import { CreatePaymentIntent } from "elements/CreatePaymentIntent";
 import { Customer } from "components/Customer";
 import { Grid } from "components/Grid";
@@ -48,6 +49,11 @@ export function PaymentIntent() {
         {/* Confirm Card Payment */}
         <Grid size="large">
           <ConfirmCardPayment />
+        </Grid>
+
+        {/* Confirm Payment Intent */}
+        <Grid size="large">
+          <ConfirmPaymentIntent />
         </Grid>
 
       </Main>
