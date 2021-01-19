@@ -60,10 +60,10 @@ export function CreatePaymentIntent() {
       setStatus(request.status);
       setNextAction(JsonToString(request.next_action));
       loader.loaded();
-      Alert.info("Copied to clipboard", "Client Secret");
-      // ref.current.focus();
-      // ref.current.select();
-      // document.execCommand("copy");
+      Alert.info("Copied to clipboard", "Payment Intent ID");
+      ref.current.focus();
+      ref.current.select();
+      document.execCommand("copy");
     } catch (error) {
       Alert.error(error.message, "Something went wrong!");
       loader.loaded();
@@ -133,10 +133,10 @@ export function CreatePaymentIntent() {
         {clientSecret && (
           <>
             <Grid>
-              <Readonly value={clientSecret} placeholder="Client Secret" reference={ref} />
+              <Readonly value={paymentIntentId} placeholder="Payment Intent ID" reference={ref} />
             </Grid>
             <Grid layout="small-right">
-              <Readonly value={paymentIntentId} placeholder="Payment Intent ID" />
+              <Readonly value={clientSecret} placeholder="Client Secret" />
               <Readonly value={status} placeholder="Status" />
             </Grid>
             {nextAction && (
