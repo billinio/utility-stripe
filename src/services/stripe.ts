@@ -37,10 +37,13 @@ class Stripe {
     const payload: Dictionary = {
       amount: Math.round(100 * parseFloat(amount.replace(/[$,]/g, ""))),
       currency,
+      confirm: true,
+      setup_future_usage: "off_session",
     };
     if (customerId) {
       payload.customer = customerId;
-    } else if (paymentMethodId) {
+    }
+    if (paymentMethodId) {
       payload.payment_method = paymentMethodId;
     }
     return this.request(

@@ -47,7 +47,10 @@ export function ConfirmCardPayment() {
       });
       loader.loaded();
       if (error) {
-        Alert.error(error.message, "Oops!");
+        if (error.code === "payment_intent_unexpected_state") {
+          return Alert.error("You cannot confirm this PaymentIntent because it has already succeeded after being previously confirmed.", "Oops!");
+        }
+        return Alert.error(error.message, "Oops!");
       } else if (paymentIntent) {
         setPaymentIntentId(paymentIntent.id);
         setStatus(paymentIntent.status);
@@ -85,7 +88,8 @@ export function ConfirmCardPayment() {
         <Summary>
           Now the intent to pay has been requested, we need to <a href="https://stripe.com/docs/js/payment_intents/confirm_card_payment" target="_blank" rel="noreferrer">confirm this payment</a> to
           allow the customer to verify any PSD2/3DS/3DS2 prompts (if applicable). <code>payment_method.id</code> is only required for members to confirm the card 
-          the customer wants to use (as they may have multiple).
+          the customer wants to use (as they may have multiple). This process is not required if the above <strong>Create Payment Intent</strong> returned a <code>status</code> of
+          <code>succeeded</code>.
         </Summary>
       </Heading>
 
